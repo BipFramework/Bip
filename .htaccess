@@ -1,0 +1,14 @@
+# Disable Indexing
+Options All -Indexes
+
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+# Redirect to the bip.php
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule (.*) bip.php?data=$1 [L]
+</IfModule>

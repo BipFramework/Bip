@@ -1,0 +1,18 @@
+# For Enable .htaccess :
+
+in ubuntu servers add this
+
+
+</VirtualHost>
+<Directory /var/www/html>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+
+to end of /etc/apache2/enabled-sites/...
+then
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+#################################
