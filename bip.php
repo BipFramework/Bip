@@ -3,13 +3,13 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 
-//echo $_GET["data"]."\n\n";
 if(!isset($argv[0])){
-    $method = strtolower(explode('/',$_GET["data"])[0]);
+    $_queryArray = explode('/',$_GET['data']);
+    $_method     = strtolower($_queryArray[0]);
 
-    if($method == 'webhook')
+    if($_method == 'webhook')
     require('core/boot/init/init.php');
-    elseif($method == 'install')
+    elseif($_method == 'install')
     require('core/boot/install/install.php');
     else
     require('core/boot/web/index.php');
