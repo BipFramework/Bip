@@ -6,9 +6,9 @@ order allow,deny
 deny from all
 </Files>
 
-# Redirect to the bip.php
+# Set Router
 <IfModule mod_rewrite.c>
   RewriteEngine on
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule (.*) bip.php?data=$1 [L]
+  RewriteRule .* core/router.php [L]
 </IfModule>
