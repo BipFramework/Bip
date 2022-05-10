@@ -3,8 +3,7 @@
 in ubuntu servers add this
 
 
-</VirtualHost>
-<Directory /var/www/html>
+<Directory /var/www/html*>
     Options Indexes FollowSymLinks
     AllowOverride All
     Require all granted
@@ -15,4 +14,5 @@ to end of /etc/apache2/enabled-sites/...
 then
 sudo a2enmod rewrite
 sudo systemctl restart apache2
+for redhad base ...
 #################################

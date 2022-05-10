@@ -4,8 +4,14 @@ namespace Bip;
 class Bip{
     public static function route(string $route , $call): bool
     {
-        if(\strtolower(@\explode('/',$_GET['data'])[0]) == \strtolower($route)){
+        
+        //when bip isn`t in root path of public_html root route '/' isn`t working , this code replaces */bip/ with /
+        $path = \preg_replace('#^.*/bip/#','/',$_SERVER['REDIRECT_URL']);
 
+        $route = $route == '' ? '/' : $route;
+        $path = $path == '' ? '/' : $path;
+
+        if(\strtolower($route)==\strtolower($path)){
             if(\is_callable($call))
                 $call();
             elseif(\is_file(__DIR__ . '/' . $call))
