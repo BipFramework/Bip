@@ -24,8 +24,10 @@ class Bip{
         if(\preg_match('#^('.$route.')$#',$path,$routeMatches)===1){
             if(\is_callable($call))
                 $call();
-            elseif(\is_file(__DIR__ . '/' . $call))
-                require_once(__DIR__ . '/' . $call);
+            elseif(\is_file($call))
+                require_once($call);
+            else
+                throw new Exception("File : $call not found"); 
 
             return true;
         }else

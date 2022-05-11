@@ -9,10 +9,11 @@ use Bip\Bip;
 Bip::route('/',function(){
     echo 'It`s work ! Bip is running ...';
 });
-Bip::route('/webhook',__DIR__.'/boot/init/init.php');
+Bip::route('/webhook','boot/init/init.php');
 
-Bip::route('/web.+',function (){
+Bip::route('/web',function (){
      echo 'hi from console';
+
  });
 
  
