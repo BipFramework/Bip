@@ -1,2 +1,2 @@
 <?php
-echo 'Bip framework is running ...';
+echo 'It`s work ! Bip is running ...';
