@@ -2,16 +2,26 @@
 namespace Bip;
 
 class Bip{
+    /**
+     * array of current route matches
+     * @var array
+     */
+    public static $routeMatches;    
+
+    /**
+     * route : main router of bip
+     *
+     * @param  string $route regex patten do not use ^$
+     * @param  mixed $call callable function or string path without __DIR__
+     * @return bool returns true if success
+     */
     public static function route(string $route , $call): bool
     {
         
         //when bip isn`t in root path of public_html root route '/' isn`t working , this code replaces */bip/ with /
         $path = \preg_replace('#^.*/bip/#','/',$_SERVER['REDIRECT_URL']);
-
-        $route = $route == '' ? '/' : $route;
-        $path = $path == '' ? '/' : $path;
-
-        if(\strtolower($route)==\strtolower($path)){
+        
+        if(\preg_match('#^('.$route.')$#',$path,$routeMatches)===1){
             if(\is_callable($call))
                 $call();
             elseif(\is_file(__DIR__ . '/' . $call))
