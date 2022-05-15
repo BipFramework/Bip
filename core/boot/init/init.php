@@ -1,17 +1,12 @@
 <?php
+use Bip\BipRoute;
+if(isset(BipRoute::$routeMatches[1])){
+    if(is_file('../bots/'.BipRoute::$routeMatches[1].'/main.php')){
+        chdir('../bots/'.BipRoute::$routeMatches[1]);
+        require('../bots/'.BipRoute::$routeMatches[1].'/main.php');
+    }else
+        throw new Exception('main file not found bots/'.BipRoute::$routeMatches[1].'/main.php');
 
-echo "webhhhhook";
-
-
-/*
-=if(isset($_queryArray[1]) && in_array('bots/'.$_queryArray[1],glob('bots/*',GLOB_ONLYDIR))){
-    if(is_file('bots/'.$_queryArray[1].'/main.php'))
-        require('bots/'.$_queryArray[1].'/main.php');
-    else
-    throw new Exception('File : bots/'.$_queryArray[1].'/main.php not found - main.php is entry point of any bip project !');
-}elseif(isset($_queryArray[1])){
-    require(__DIR__.'/view.botNotFound.php');
 }else{
-    require(__DIR__.'/view.invalidWebhookParam.php');
+    throw new Exception('enter project name after webhook/[project name]');
 }
-*/
