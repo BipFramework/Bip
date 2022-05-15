@@ -8,7 +8,7 @@ namespace Bip;
 
 class BipRoute{
     /**
-     * array of current route matches
+     * array of current route matches [first array member is full match]
      * @var array
      */
     public static $routeMatches;
@@ -37,7 +37,7 @@ class BipRoute{
             //when bip isn`t in root path of public_html root route '/' isn`t working , this code replaces */bip/ with /
             $path = \preg_replace('#^.*/bip/#','/',$_SERVER['REDIRECT_URL']);
 
-            if(\preg_match('#^('.$rou[0].')$#i',$path,$routeMatches)===1){
+            if(\preg_match('#^'.$rou[0].'$#i',$path,self::$routeMatches)===1){
               if(\is_callable($rou[1]))
                   $rou[1]();
               elseif(\is_file($rou[1]))

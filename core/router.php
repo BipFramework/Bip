@@ -10,13 +10,14 @@ use Bip\BipRoute;
 /*
 * You can use regex pattern in routes
 * Queries are not route
+* The CaseInsensitive is enabled
 */
 
 #Root Route
 BipRoute::route('/','boot/web/index.php');
 
 #Webhook Route
-BipRoute::route('/webhook/?.*','boot/init/init.php');
+BipRoute::route('/webhook/?([^/]*)/?','boot/init/init.php');
 
 #Install Route
 BipRoute::route('/install','boot/install/install.php');
