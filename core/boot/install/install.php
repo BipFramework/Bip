@@ -1,2 +1,2 @@
  <?php
-echo "Welcome To Bip";
+echo "Welcome To Bip Installer";
