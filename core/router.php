@@ -13,14 +13,15 @@ use Bip\BipRoute;
 * The CaseInsensitive is enabled
 */
 
-#Root Route
-BipRoute::route('/','boot/web/index.php');
 
 #Webhook Route
-BipRoute::route('/webhook/?([^/]*)/?','boot/init/init.php');
+BipRoute::route('/webhook/?([^/]*)/?','init/init.php');
+
+#Root Route
+BipRoute::route('/','view/index.php');
 
 #Install Route
-BipRoute::route('/install','boot/install/install.php');
+BipRoute::route('/install','view/install/install.php');
 
 
 #Help Route

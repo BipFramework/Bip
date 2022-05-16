@@ -5,7 +5,7 @@ if(isset(BipRoute::$routeMatches[1]) && !empty(BipRoute::$routeMatches[1])){
         chdir('../bots/'.BipRoute::$routeMatches[1]);
         require('main.php');
     }else
-        require(__DIR__.'/view/projectNotFound.php');
+        require(__DIR__.'/../view/init/projectNotFound.php');
 
 }else
-    require(__DIR__.'/view/webhookHelp.php');
+    require(__DIR__.'/../view/init/webhookHelp.php');
