@@ -9,8 +9,12 @@ use Bip\BipRoute;
 
 /*
 * You can use regex pattern in routes
-* Queries are not route
+* Http Queries are not route
 * The CaseInsensitive is enabled
+* -----------------------------------
+* Magic routes starts with @ 
+* list of magic routes = [@NOT_FOUND]
+*
 */
 
 
@@ -18,7 +22,7 @@ use Bip\BipRoute;
 BipRoute::route('/webhook/?([^/]*)/?','init/init.php');
 
 #Root Route
-BipRoute::route('/','view/index.php');
+BipRoute::route('/','view/web/index.php');
 
 #Install Route
 BipRoute::route('/install','view/install/install.php');
@@ -29,5 +33,6 @@ BipRoute::route('/help',function (){
      echo 'need help ? <a href="https://github.com/sepsoh/bip"> click here ! </a>';
 });
 
+BipRoute::route('@NOT_FOUND','view/errorPages/notFound.php');
 
 BipRoute::routeFlush();
