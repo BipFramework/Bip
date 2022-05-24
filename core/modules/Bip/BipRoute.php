@@ -26,6 +26,8 @@ class BipRoute{
      * @param  string $route regex patten do not use ^$
      * @param  mixed $call callable function or string path without __DIR__
      */
+    private function __construct(){}
+
     public static function route(string $route , $call)
     {
       self::$routes[] = [$route,$call];
