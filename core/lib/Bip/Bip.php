@@ -4,7 +4,7 @@
 * https://github.com/sepsoh/bip
 *
 ********************************/
-namespace Bip;
+//namespace Bip;
 
 class Bip{
 

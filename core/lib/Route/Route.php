@@ -4,9 +4,9 @@
 * https://github.com/sepsoh/bip
 *
 ********************************/
-namespace Bip;
+namespace lib\Route;
 
-class BipRoute{
+class Route{
     
     /**
      * array of current route matches [first array member is full match]

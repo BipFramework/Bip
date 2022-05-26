@@ -2,9 +2,9 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require __DIR__ . '/modules/Bip/BipRoute.php';
+require __DIR__ . '/lib/autoload.php';
 
-use Bip\BipRoute;
+use lib\Route\Route;
 
 
 /*
@@ -19,20 +19,20 @@ use Bip\BipRoute;
 
 
 #Webhook Route
-BipRoute::route('/webhook/?([^/]*)/?','init/init.php');
+Route::route('/webhook/?([^/]*)/?','init/init.php');
 
 #Root Route
-BipRoute::route('/','view/web/index.php');
+Route::route('/','view/web/index.php');
 
 #Install Route
-BipRoute::route('/install','view/install/install.php');
+Route::route('/install','view/install/install.php');
 
 
 #Help Route
-BipRoute::route('/help',function (){
+Route::route('/help',function (){
      echo 'need help ? <a href="https://github.com/sepsoh/bip"> click here ! </a>';
 });
 
-BipRoute::route('@NOT_FOUND','view/errorPages/notFound.php');
+Route::route('@NOT_FOUND','view/errorPages/notFound.php');
 
-BipRoute::routeFlush();
+Route::routeFlush();

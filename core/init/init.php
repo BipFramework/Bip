@@ -1,8 +1,9 @@
 <?php
-use Bip\BipRoute;
-if(isset(BipRoute::$routeMatches[1]) && !empty(BipRoute::$routeMatches[1])){
-    if(is_file('../bots/'.BipRoute::$routeMatches[1].'/main.php')){
-        chdir('../bots/'.BipRoute::$routeMatches[1]);
+use lib\Route\Route;
+
+if(isset(Route::$routeMatches[1]) && !empty(Route::$routeMatches[1])){
+    if(is_file('../bots/'.Route::$routeMatches[1].'/main.php')){
+        chdir('../bots/'.Route::$routeMatches[1]);
         require('main.php');
     }else
         require(__DIR__.'/../view/init/projectNotFound.php');
