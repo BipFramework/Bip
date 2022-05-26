@@ -1,7 +1,7 @@
 <?php
 
 
-//use lib\Bip;
+use lib\Bip;
 
 echo "im simple bot";
 
