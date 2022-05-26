@@ -1,7 +1,7 @@
 <?php
 
 
-//use Core\Route\Route;
+//use lib\Bip;
 
 echo "im simple bot";
 
