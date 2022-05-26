@@ -1,1 +1,2 @@
 <?php
+namespace lib\Exception;

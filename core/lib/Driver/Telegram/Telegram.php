@@ -1,6 +1,7 @@
 <?php
-namespace Event;
-class Event{
+namespace lib\Driver\Telegram;
+
+class Telegram{
     public static $telegram ;
     private function __construct(){}
     static function create(){
