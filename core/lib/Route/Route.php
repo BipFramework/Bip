@@ -1,9 +1,9 @@
 <?php
-/******************************** 
+/*
 * More on Github :
 * https://github.com/sepsoh/bip
 *
-********************************/
+*/
 namespace lib\Route;
 
 class Route{
@@ -19,15 +19,13 @@ class Route{
      * @var array
      */
     public static $routes;
-
+    private function __construct(){}
     /**
      * route : main router of bip
      *
      * @param  string $route regex patten do not use ^$
      * @param  mixed $call callable function or string path without __DIR__
      */
-    private function __construct(){}
-
     public static function route(string $route , $call)
     {
       self::$routes[] = [$route,$call];
@@ -45,7 +43,7 @@ class Route{
               elseif(\is_file($rou[1]))
                   require_once($rou[1]);
               else
-                  throw new Exception("File : $rou[1] not found"); 
+                  throw new \Exception("File : $rou[1] not found");
   
               $isRouted=true;
           }
@@ -58,7 +56,7 @@ class Route{
                     elseif(\is_file($rou[1]))
                         require_once($rou[1]);
                     else
-                        throw new Exception("File : $rou[1] not found"); 
+                        throw new \Exception("File : $rou[1] not found");
             }
             
 
