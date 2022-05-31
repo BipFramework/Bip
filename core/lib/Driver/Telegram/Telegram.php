@@ -7,6 +7,7 @@ class Telegram{
     static function create(){
         if(NULL == self::$telegram)
             self::$telegram == new Telegram();
+        return self::$telegram;
     }
     
 }
