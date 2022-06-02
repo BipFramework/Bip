@@ -12,6 +12,8 @@ abstract class Database{
      */
     public function __construct(Config $config)
     {
-        $this->pdo = new PDO($config->getByKey('databaseDsn'),$config->getByKey('databaseUsername'),$config->getByKey('databasePassword'));
+        $this->pdo = new PDO($config->get('databaseDsn'),$config->get('databaseUsername'),$config->get('databasePassword'));
     }
+
+
 }
