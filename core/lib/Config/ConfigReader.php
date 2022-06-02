@@ -3,32 +3,59 @@
 
 namespace lib\Config;
 
+use Exception;
+use function file_get_contents;
+use function json_decode;
 
 class ConfigReader
 {
+
+    private const JSON = 0;
+    private const XML = 1;
+
     /**
      * 0 -> json
      * 1 -> xml
-     * 2 -> php
+     * 2 -> ...
      * @var int
      */
     private int $configType;
-    private object $config;
-
+    public object $config;
+    private string $configPath;
     /**
      * @throws Exception
      */
     public function __construct(String $configPath)
     {
-        // you must check what is config type
-        $this->configType = 0;
-        if(is_file($configPath) && $this->configType == 0)
+        $this->configPath = $configPath;
+
+
+        // you must check here what is config type
+        $this->configType = ConfigReader::JSON;
+        // zero is set to test it
+
+
+        if(is_file($configPath) && $this->configType == ConfigReader::JSON)
             $this->config = json_decode(file_get_contents($configPath));
         else
-            throw new \Exception('Config file dose not exist');
+            throw new Exception('Config file dose not exist');
     }
-    public function getConfig(){
-        return $this->config;
+
+    /**
+     * @return String
+     */
+    public function getConfigPath(): string
+    {
+        return $this->configPath;
+    }
+    public function updateConfig(): void
+    {
+        if($this->configType == ConfigReader::JSON){
+            file_put_contents($this->configPath,json_encode($this->config));
+        }elseif($this->configType == ConfigReader::XML){
+            // do xml update
+        }
+
     }
 
 
