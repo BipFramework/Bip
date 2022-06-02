@@ -11,7 +11,7 @@ class ConfigReader
 {
 
     private const JSON = 0;
-    private const XML = 1;
+    //private const XML = 1;
 
     /**
      * 0 -> json
@@ -48,12 +48,10 @@ class ConfigReader
     {
         return $this->configPath;
     }
-    public function updateConfig(): void
+    public function writeConfig(): void
     {
         if($this->configType == ConfigReader::JSON){
-            file_put_contents($this->configPath,json_encode($this->config));
-        }elseif($this->configType == ConfigReader::XML){
-            // do xml update
+            file_put_contents($this->configPath,json_encode($this->config,JSON_PRETTY_PRINT));
         }
 
     }

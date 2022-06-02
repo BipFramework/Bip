@@ -28,7 +28,7 @@ class Config
         $this->configReader->config->{$key} = $value;
     }
     public function write(): void {
-        $this->configReader->updateConfig();
+        $this->configReader->writeConfig();
     }
 
 }
