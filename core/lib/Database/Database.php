@@ -4,8 +4,17 @@ namespace lib\Database;
 use lib\Config\Config;
 use PDO;
 
-abstract class Database{
+//abstract
+class Database{
     private PDO $pdo;
+
+    /**
+     * @return PDO
+     */
+    public function getPdo(): PDO
+    {
+        return $this->pdo;
+    }
 
     /**
      * @throws \Exception
