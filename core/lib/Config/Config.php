@@ -23,11 +23,12 @@ class Config
             throw new Exception("[$key] key not found in file ".$this->configReader->getConfigPath().' please read lin\Config manual ');
 
     }
-    public function set(string $key , string $value):void{
+    public function set(string $key , string $value): void
+    {
         $this->configReader->config->{$key} = $value;
+    }
+    public function write(): void {
         $this->configReader->updateConfig();
     }
-    public function setOnlyThisTime(string $key , string $value):void{
-        $this->configReader->config->{$key} = $value;
-    }
+
 }
