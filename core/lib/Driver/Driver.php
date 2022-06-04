@@ -4,7 +4,7 @@
 namespace lib\Driver;
 
 
-class Driver
+abstract class Driver
 {
 
 }
