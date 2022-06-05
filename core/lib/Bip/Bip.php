@@ -16,11 +16,24 @@ class Bip{
     private Config $config;
 
     /**
+     * @return Config
+     * @throws \Exception
+     */
+    public static function getConfig(): Config
+    {
+        return self::getBip()->config;
+    }
+
+    /**
      * @return Bip
+     * @throws \Exception
      */
     public static function getBip(): Bip
     {
-        return self::$bip;
+        if (self::$bip == null)
+            throw new \Exception('Bip::setup is not called');
+        else
+            return self::$bip;
     }
 
     private function __construct(){}
@@ -28,8 +41,8 @@ class Bip{
         if(self::$bip == null)
             self::$bip = new Bip();
 
-        self::getBip()->driver = $driver;
-        self::getBip()->config = $config;
+        self::$bip->driver = $driver;
+        self::$bip->config = $config;
 
     }
 
