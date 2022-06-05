@@ -8,7 +8,7 @@ namespace lib\Bip;
 
 use lib\Config\Config;
 use lib\Driver\Driver;
-
+use lib\Exception\BipException;
 class Bip{
     // type of $bip is Bip , when you declare its type you cant use it before initialization
     private static $bip ;
@@ -17,7 +17,7 @@ class Bip{
 
     /**
      * @return Config
-     * @throws \Exception
+     * @throws BipException
      */
     public static function getConfig(): Config
     {
@@ -26,12 +26,12 @@ class Bip{
 
     /**
      * @return Bip
-     * @throws \Exception
+     * @throws BipException
      */
     public static function getBip(): Bip
     {
         if (self::$bip == null)
-            throw new \Exception('Bip::setup is not called');
+            throw new BipException('Bip::setup is not called');
         else
             return self::$bip;
     }

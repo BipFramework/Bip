@@ -2,6 +2,7 @@
 namespace lib\Database;
 
 use lib\Bip\Bip;
+use lib\Exception\BipException;
 use PDO;
 
 //abstract
@@ -17,7 +18,7 @@ class Database{
     }
 
     /**
-     * @throws \Exception
+     * @throws BipException
      */
     public function __construct()
     {

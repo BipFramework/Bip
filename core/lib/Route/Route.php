@@ -6,6 +6,8 @@
 */
 namespace lib\Route;
 
+use lib\Exception\BipException;
+
 class Route{
     
     /**
@@ -43,7 +45,7 @@ class Route{
               elseif(\is_file($rou[1]))
                   require_once($rou[1]);
               else
-                  throw new \Exception("File : $rou[1] not found");
+                  throw new BipException("File : $rou[1] not found");
   
               $isRouted=true;
           }
@@ -56,7 +58,7 @@ class Route{
                     elseif(\is_file($rou[1]))
                         require_once($rou[1]);
                     else
-                        throw new \Exception("File : $rou[1] not found");
+                        throw new BipException("File : $rou[1] not found");
             }
             
 

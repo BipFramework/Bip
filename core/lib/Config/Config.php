@@ -1,7 +1,7 @@
 <?php
 namespace lib\Config;
 
-use Exception;
+use lib\Exception\BipException;
 
 class Config
 {
@@ -9,27 +9,27 @@ class Config
     private string $configPath;
 
     /**
-     * @throws Exception
+     * @throws BipException
      */
     public function __construct(string $configPath)
     {
         if(is_file($configPath))
             $this->config = json_decode(file_get_contents($configPath));
         else
-            throw new Exception('Config file dose not exist');
+            throw new BipException('Config file dose not exist');
 
         $this->configPath = $configPath;
     }
 
     /**
-     * @throws Exception
+     * @throws BipException
      */
     public function get(string $key):mixed{
 
         if(isset($this->config->{$key}))
             return $this->config->{$key};
         else
-            throw new Exception("[$key] key not found in file $this->configPath.' please read lib\Config manual ");
+            throw new BipException("[$key] key not found in file $this->configPath.' please read lib\Config manual ");
 
     }
     public function set(string $key , string $value): void

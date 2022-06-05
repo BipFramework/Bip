@@ -3,11 +3,12 @@
 
 namespace lib\Bip;
 
+use lib\Exception\BipException;
 
 abstract class Stage
 {
     protected function init(){
-        throw new \Exception('You must override init() method');
+        throw new BipException('You must override init() method');
     }
 
 }
