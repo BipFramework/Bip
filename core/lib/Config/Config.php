@@ -2,6 +2,7 @@
 namespace lib\Config;
 
 use lib\Exception\BipException;
+use stdClass;
 
 class Config
 {
@@ -11,14 +12,19 @@ class Config
     /**
      * @throws BipException
      */
-    public function __construct(string $configPath)
+    public function __construct(string $configPath = null)
     {
-        if(is_file($configPath))
-            $this->config = json_decode(file_get_contents($configPath));
-        else
-            throw new BipException('Config file dose not exist');
+        if($configPath != null) {
+            if (is_file($configPath))
+                $this->config = json_decode(file_get_contents($configPath));
+            else
+                throw new BipException('Config file dose not exist');
 
-        $this->configPath = $configPath;
+            $this->configPath = $configPath;
+        }else{
+            $this->configPath = 'config.json'; //for write() method
+            $this->config     = new stdClass();
+        }
     }
 
     /**
