@@ -10,8 +10,8 @@ use lib\Config\Config;
 use lib\Driver\Driver;
 
 class Bip{
-    private static Bip $bip;
-
+    // type of $bip is Bip , when you declare its type you cant use it before initialization
+    private static $bip ;
     private Driver $driver;
     private Config $config;
 
@@ -38,12 +38,11 @@ class Bip{
 
     private function __construct(){}
     public static function setup(Driver $driver,Config $config){
-        if(self::$bip == null)
+        if(self::$bip == null) {
             self::$bip = new Bip();
-
-        self::$bip->driver = $driver;
-        self::$bip->config = $config;
-
+            self::$bip->driver = $driver;
+            self::$bip->config = $config;
+        }
     }
 
 }
