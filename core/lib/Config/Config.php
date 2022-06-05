@@ -5,11 +5,20 @@ use Exception;
 
 class Config
 {
-    private ConfigReader $configReader;
+    private object $config;
+    private string $configPath;
 
+    /**
+     * @throws Exception
+     */
     public function __construct(string $configPath)
     {
-        $this->configReader = new ConfigReader($configPath);
+        if(is_file($configPath))
+            $this->config = json_decode(file_get_contents($configPath));
+        else
+            throw new Exception('Config file dose not exist');
+
+        $this->configPath = $configPath;
     }
 
     /**
@@ -17,18 +26,22 @@ class Config
      */
     public function get(string $key):mixed{
 
-        if(isset($this->configReader->config->{$key}))
-            return $this->configReader->config->{$key};
+        if(isset($this->config->{$key}))
+            return $this->config->{$key};
         else
-            throw new Exception("[$key] key not found in file ".$this->configReader->getConfigPath().' please read lin\Config manual ');
+            throw new Exception("[$key] key not found in file $this->configPath.' please read lib\Config manual ");
 
     }
     public function set(string $key , string $value): void
     {
-        $this->configReader->config->{$key} = $value;
+        $this->config->{$key} = $value;
     }
-    public function write(): void {
-        $this->configReader->writeConfig();
+
+    public function write(): void
+    {
+        file_put_contents($this->configPath,json_encode($this->config,JSON_PRETTY_PRINT));
     }
+
+
 
 }
