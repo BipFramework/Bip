@@ -1,7 +1,7 @@
 <?php
 namespace lib\Database;
 
-use lib\Config\Config;
+use lib\Bip\Bip;
 use PDO;
 
 //abstract
@@ -19,9 +19,9 @@ class Database{
     /**
      * @throws \Exception
      */
-    public function __construct(Config $config)
+    public function __construct()
     {
-        $this->pdo = new PDO($config->get('databaseDsn'),$config->get('databaseUsername'),$config->get('databasePassword'));
+        $this->pdo = new PDO(Bip::getConfig()->get('databaseDsn'),Bip::getConfig()->get('databaseUsername'),Bip::getConfig()->get('databasePassword'));
     }
 
 
