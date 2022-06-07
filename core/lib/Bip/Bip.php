@@ -44,5 +44,9 @@ class Bip{
             self::$bip->config = $config;
         }
     }
+    public static function bindStage(string|Stage $stage){}
+    public static function bindPort(string $portName){}
+    public static function setupStage(string|Stage $stage){}
+
 
 }
