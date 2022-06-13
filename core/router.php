@@ -33,6 +33,10 @@ Route::route('/help',function (){
      echo 'need help ? <a href="https://github.com/sepsoh/bip"> click here ! </a>';
 });
 
-Route::route('@NOT_FOUND','view/errorPages/notFound.php');
+Route::route('@NOT_FOUND',function (){
+    echo str_replace('###ERROR_MESSAGE###',"Error 404 : Requested page not found ! ",
+         str_replace('###ERROR_TITLE###' , "Not Found",
+        file_get_contents(__DIR__.'/view/error-templates/dark-snow.html')));
+});
 
 Route::routeFlush();
