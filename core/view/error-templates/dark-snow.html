@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>###ERROR_TITLE###</title>
+        <style>
+body {
+  margin: 0;
+  font-family: monospace, monospace;
+  background: #292929;
+  color: #64d86b;
+}
+#error-message {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding-top: 1%;
+  padding-left: 4%;
+}
+@media (min-width: 320px) {
+  body {
+    font-size: 100%;
+    word-break: break-word;
+  }
+}
+@media (min-width: 481px) {
+  body {
+    font-size: 125%;
+  }
+}
+@media (min-width: 769px) {
+  body {
+    font-size: 150%;
+  }
+}
+@media (min-width: 1025px) {
+  body {
+    font-size: 175%;
+  }
+}
+
+@media (min-width: 1201px) {
+  body {
+    font-size: 200%;
+  }
+}
+/* Special thanks to https://codepen.io/iceable */
+.bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+  animation: bg-animation .2s infinite;
+  opacity: .9;
+  visibility: visible;
+}
+@keyframes bg-animation {
+  0% {
+    transform: translate(0, 0)
+  }
+  10% {
+    transform: translate(-5%, -5%)
+  }
+  20% {
+    transform: translate(-10%, 5%)
+  }
+  30% {
+    transform: translate(5%, -10%)
+  }
+  40% {
+    transform: translate(-5%, 15%)
+  }
+  50% {
+    transform: translate(-10%, 5%)
+  }
+  60% {
+    transform: translate(15%, 0)
+  }
+  70% {
+    transform: translate(0, 10%)
+  }
+  80% {
+    transform: translate(-15%, 0)
+  }
+  90% {
+    transform: translate(10%, 5%)
+  }
+  100% {
+    transform: translate(5%, 0)
+  }
+}
+        </style>
+    </head>
+<body>
+  <div class='bg'></div>
+  <p id='error-message'>###ERROR_MESSAGE###</p>
+  <script>
+
+setInterval(changeText, 1000);
+
+let statNum = 1;
+
+let a = document.getElementById("error-message").innerHTML;
+
+function changeText() {
+  switch (statNum) {
+    case 1:
+      a += ".";
+      statNum = 2;
+      break;
+    case 2:
+      a += ".";
+      statNum = 3;
+      break;
+    case 3:
+      a += ".";
+      statNum = 4;
+      break;
+    default:
+      a = a.slice(0, -3);
+      statNum = 1;
+    }
+    document.getElementById("error-message").innerHTML = a;
+  }
+
+
+  </script>
+</body>
+</html>
